@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioFornecedores" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Key" uuid="ff1518cc-5b85-4208-91e0-23295167fcba">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#D2B48C">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#FFF8EF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#B8860B">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFEDBF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="9b57d200-268b-4a80-815c-f15a1e907b76"/>
+	<subDataset name="Table Dataset 2" uuid="873b2e23-7345-4692-bb2e-89916dd6a6d9"/>
+	<subDataset name="Table Dataset 3" uuid="b8005fd6-db40-4c10-b3ff-f885ff2b9794"/>
+	<subDataset name="ds_reservas" uuid="72431f2e-e638-4841-bfec-c4913a02cd00">
+		<queryString language="SQL">
+			<![CDATA[SELECT * FROM tb_reservas]]>
+		</queryString>
+		<field name="cod_res" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="func_cod" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cli_cod" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="dep_cod" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="dt_res" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="status_res" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<group name="cod_res">
+			<groupExpression><![CDATA[$F{cod_res}]]></groupExpression>
+		</group>
+		<group name="func_cod">
+			<groupExpression><![CDATA[$F{func_cod}]]></groupExpression>
+		</group>
+		<group name="cli_cod">
+			<groupExpression><![CDATA[$F{cli_cod}]]></groupExpression>
+		</group>
+		<group name="dep_cod">
+			<groupExpression><![CDATA[$F{dep_cod}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT * FROM tb_fornecedores, tb_empresas]]>
+	</queryString>
+	<field name="cod_forn" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tel_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidade_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairro_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnpj_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_cad_forn" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obs_forn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_forn" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_emp" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnpj_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tel_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidade_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="133" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="52" y="18" width="187" height="35" uuid="4c4a4556-657f-4af7-b95f-76cb27b73c3a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="30" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Fornecedores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="164" height="35" uuid="0a3e60e1-a2e6-4abf-9096-e8747d3018a2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="15" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Relatórtio]]></text>
+			</staticText>
+			<image>
+				<reportElement x="241" y="4" width="321" height="73" uuid="6668c47a-3afb-47af-9001-8e4b42f0beff"/>
+				<imageExpression><![CDATA["C:\\temporario\\Logo.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="-1" y="71" width="105" height="20" forecolor="#000000" uuid="dde390ea-f1cb-463b-81d7-2657b17a6173"/>
+				<textElement>
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="91" width="27" height="20" forecolor="#000000" uuid="5172fcf5-7890-4bb2-85d1-233686417707"/>
+				<textFieldExpression><![CDATA[$F{cidade_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-1" y="91" width="165" height="20" forecolor="#000000" uuid="f67d7d36-7bd8-48f2-a9b9-e4cc0da58702"/>
+				<textFieldExpression><![CDATA[$F{end_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="91" width="81" height="20" forecolor="#000000" uuid="3d48ba0c-2d06-47da-a092-02b47343f0bc"/>
+				<textFieldExpression><![CDATA[$F{tel_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="104" y="71" width="104" height="20" forecolor="#000000" uuid="5b73d71f-da33-47d0-bc96-5516cfb83809"/>
+				<textFieldExpression><![CDATA[$F{cnpj_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="91" width="80" height="20" forecolor="#000000" uuid="135cc98e-d42d-41dd-a03b-5e4c29d16e81"/>
+				<textFieldExpression><![CDATA[$F{estado_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="71" width="159" height="20" forecolor="#000000" uuid="b09f97fa-1c07-44e9-8e02-c4d89a1569ef"/>
+				<textFieldExpression><![CDATA[$F{email_emp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="191" y="91" width="6" height="20" uuid="2b5e8769-9194-4afe-b9fb-6e10aa89453d"/>
+				<text><![CDATA[-]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="51" height="20" uuid="d38ebfde-8441-4204-9dd3-ba870e353040"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="0" width="147" height="20" uuid="8808d374-b870-4668-967f-ca44ef667c93"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="0" width="102" height="20" uuid="aae57eb9-e586-4eb4-9e92-4a2c9c4c1e27"/>
+				<text><![CDATA[CNPJ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="484" y="0" width="70" height="20" uuid="dccf8a1f-e2a0-4bcb-a711-3734fd4a2037"/>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-8" y="24" width="572" height="1" uuid="5b0914cf-db79-4125-b131-97e6ac84d738"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="301" y="0" width="183" height="20" uuid="22aa282e-f02a-4d85-b484-0f487ef42db1"/>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-5" y="-1" width="566" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="24661525-035d-4b8d-9c13-1be6079394b8"/>
+				<box>
+					<pen lineColor="#995E40"/>
+					<topPen lineColor="#995E40"/>
+					<leftPen lineColor="#995E40"/>
+					<bottomPen lineColor="#995E40"/>
+					<rightPen lineColor="#995E40"/>
+				</box>
+			</frame>
+			<textField>
+				<reportElement x="51" y="3" width="147" height="20" forecolor="#000000" uuid="ffaabf29-788f-4252-b996-af83582f9c81"/>
+				<textFieldExpression><![CDATA[$F{nome_forn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="4" width="51" height="20" forecolor="#000000" uuid="c0d52636-c3b2-492f-8359-c33384d012c7"/>
+				<textFieldExpression><![CDATA[$F{cod_forn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="3" width="102" height="20" forecolor="#000000" uuid="c2338fc5-c4ac-4e03-9dcc-03627900c7ed"/>
+				<textFieldExpression><![CDATA[$F{cnpj_forn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="484" y="4" width="70" height="20" forecolor="#000000" uuid="189cc4e9-a199-471c-b459-3624b2b38970"/>
+				<textFieldExpression><![CDATA[$F{tel_forn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="4" width="183" height="20" forecolor="#000000" uuid="f5a70a39-e3fa-448a-ae5d-b557b3b87259"/>
+				<textFieldExpression><![CDATA[$F{end_forn}+", "+$F{num_forn}+" "+$F{cidade_forn}+"-"+$F{estado_forn}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-10" y="-4" width="1" height="29" uuid="81e331b0-5c5b-4537-b505-8e73bc25e8dc"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="565" y="-4" width="1" height="29" uuid="85e08655-91bc-41fc-897a-a25b4221e7a3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-1" y="6" width="558" height="1" uuid="8ba473c8-4208-404c-b491-e43f5f14881e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="e714820c-dd24-4121-aa7b-b38a0a14fb7f"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="40da8fec-c951-4f90-bcec-a7ce724d9289"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="2c7fe341-2dcd-4395-b9b1-8fd45db4efa6"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE, dd &apos;de&apos; MMMMM &apos;de&apos; yyyy &apos;às&apos; HH:mm">
+					<reportElement style="Column header" x="22" y="1" width="290" height="20" forecolor="#736343" uuid="0de63348-89e8-4507-a872-27eef2397251"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

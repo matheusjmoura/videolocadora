@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioClientesCad" pageWidth="595" pageHeight="453" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Key" uuid="ff1518cc-5b85-4208-91e0-23295167fcba">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#D2B48C">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#FFF8EF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#B8860B">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFEDBF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="9b57d200-268b-4a80-815c-f15a1e907b76"/>
+	<subDataset name="Table Dataset 2" uuid="873b2e23-7345-4692-bb2e-89916dd6a6d9"/>
+	<subDataset name="Table Dataset 3" uuid="b8005fd6-db40-4c10-b3ff-f885ff2b9794"/>
+	<subDataset name="ds_reservas" uuid="72431f2e-e638-4841-bfec-c4913a02cd00">
+		<queryString language="SQL">
+			<![CDATA[SELECT * FROM tb_reservas]]>
+		</queryString>
+		<field name="cod_res" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="func_cod" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cli_cod" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="dep_cod" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="dt_res" class="java.sql.Date">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="status_res" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<group name="cod_res">
+			<groupExpression><![CDATA[$F{cod_res}]]></groupExpression>
+		</group>
+		<group name="func_cod">
+			<groupExpression><![CDATA[$F{func_cod}]]></groupExpression>
+		</group>
+		<group name="cli_cod">
+			<groupExpression><![CDATA[$F{cli_cod}]]></groupExpression>
+		</group>
+		<group name="dep_cod">
+			<groupExpression><![CDATA[$F{dep_cod}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="cpf_cli" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT *, cod_func, nome_func, nome_emp, end_emp, tel_emp, cidade_emp, estado_emp, email_emp FROM tb_clientes AS Cli
+INNER JOIN tb_funcionarios AS Func ON func_cod = cod_func
+INNER JOIN tb_empresas AS Emp WHERE cpf_cli = $P{cpf_cli}]]>
+	</queryString>
+	<field name="cod_cli" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tel_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cel_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidade_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairro_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nasc_cli" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sexo_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ref_com_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_cad_cli" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="func_cod" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obs_cli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_cli" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_func" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tel_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cel_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidade_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairro_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_nasc_func" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sexo_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dt_cad_func" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sal_func" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obs_func" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_func" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cod_emp" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnpj_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tel_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidade_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email_emp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="133" splitType="Stretch">
+			<image>
+				<reportElement x="241" y="4" width="321" height="73" uuid="6668c47a-3afb-47af-9001-8e4b42f0beff"/>
+				<imageExpression><![CDATA["C:\\temporario\\Logo.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="-1" y="71" width="105" height="20" forecolor="#000000" uuid="dde390ea-f1cb-463b-81d7-2657b17a6173"/>
+				<textElement>
+					<font isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="91" width="27" height="20" forecolor="#000000" uuid="5172fcf5-7890-4bb2-85d1-233686417707"/>
+				<textFieldExpression><![CDATA[$F{cidade_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-1" y="91" width="165" height="20" forecolor="#000000" uuid="f67d7d36-7bd8-48f2-a9b9-e4cc0da58702"/>
+				<textFieldExpression><![CDATA[$F{end_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="91" width="81" height="20" forecolor="#000000" uuid="3d48ba0c-2d06-47da-a092-02b47343f0bc"/>
+				<textFieldExpression><![CDATA[$F{tel_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="104" y="71" width="104" height="20" forecolor="#000000" uuid="5b73d71f-da33-47d0-bc96-5516cfb83809"/>
+				<textFieldExpression><![CDATA[$F{cnpj_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="91" width="80" height="20" forecolor="#000000" uuid="135cc98e-d42d-41dd-a03b-5e4c29d16e81"/>
+				<textFieldExpression><![CDATA[$F{estado_emp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="71" width="159" height="20" forecolor="#000000" uuid="b09f97fa-1c07-44e9-8e02-c4d89a1569ef"/>
+				<textFieldExpression><![CDATA[$F{email_emp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="191" y="91" width="6" height="20" uuid="2b5e8769-9194-4afe-b9fb-6e10aa89453d"/>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="10" y="0" width="164" height="35" uuid="b2c71882-6890-4cc2-b572-9a155020cc91"/>
+				<textElement verticalAlignment="Middle">
+					<font size="15" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Ficha do]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="55" y="18" width="183" height="35" uuid="0b56ab43-e170-414a-b274-30bc3659644c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="30" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="217" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="217" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="24661525-035d-4b8d-9c13-1be6079394b8"/>
+				<box>
+					<pen lineColor="#995E40"/>
+					<topPen lineColor="#995E40"/>
+					<leftPen lineColor="#995E40"/>
+					<bottomPen lineColor="#995E40"/>
+					<rightPen lineColor="#995E40"/>
+				</box>
+				<textField>
+					<reportElement x="51" y="4" width="64" height="20" forecolor="#000000" uuid="c0d52636-c3b2-492f-8359-c33384d012c7"/>
+					<textFieldExpression><![CDATA[$F{cod_cli}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="169" y="4" width="379" height="20" forecolor="#000000" uuid="ffaabf29-788f-4252-b996-af83582f9c81"/>
+					<textFieldExpression><![CDATA[$F{nome_cli}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="8" y="190" width="66" height="20" uuid="000d5864-06bb-4f3c-94ba-5a229e528fd1"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Observação:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="363" y="94" width="185" height="20" forecolor="#000000" uuid="9e930932-55bb-4c5d-b397-cd9a84438634"/>
+					<textFieldExpression><![CDATA[$F{email_cli}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="359" y="34" width="41" height="20" uuid="a7a99963-3f3e-45fe-a3ce-f5e9de9a0365"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Celular:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="401" y="34" width="147" height="20" forecolor="#000000" uuid="906f3a0f-ca04-4f9e-9013-517e97c52e81"/>
+					<textFieldExpression><![CDATA[$F{cel_cli}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="479" y="126" width="70" height="20" forecolor="#000000" uuid="49d47373-3457-4e6b-b537-7476cbbb2385"/>
+					<textFieldExpression><![CDATA[$F{status_cli}.booleanValue() == true ? "Ativo" : "Inativo"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="440" y="126" width="39" height="20" uuid="e988ae3c-e79f-40a9-bff0-0aebc8f620a3"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Status:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="74" y="190" width="474" height="20" forecolor="#000000" uuid="1a66c01e-f0c4-4ca2-9ca6-be7186b7c20b"/>
+					<textFieldExpression><![CDATA[$F{obs_cli}.length() <= 0 ? "Não possui observação." : $F{obs_cli}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="141" y="34" width="75" height="20" forecolor="#000000" uuid="f5a70a39-e3fa-448a-ae5d-b557b3b87259"/>
+				<textFieldExpression><![CDATA[$F{cpf_cli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="94" width="78" height="20" forecolor="#000000" uuid="5efd8e28-4c77-4909-9bd1-ac8528eef175"/>
+				<textFieldExpression><![CDATA[$F{sexo_cli}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="227" y="34" width="50" height="20" uuid="dccf8a1f-e2a0-4bcb-a711-3734fd4a2037"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="34" width="23" height="20" uuid="f2e6bd80-4555-495d-85bc-ae0658fdcbcf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RG:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="94" width="33" height="20" uuid="432ca864-634f-455e-885e-3872fbdda38b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="4" width="38" height="20" uuid="8808d374-b870-4668-967f-ca44ef667c93"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="4" width="43" height="20" uuid="d38ebfde-8441-4204-9dd3-ba870e353040"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="277" y="34" width="70" height="20" forecolor="#000000" uuid="189cc4e9-a199-471c-b459-3624b2b38970"/>
+				<textFieldExpression><![CDATA[$F{tel_cli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="31" y="34" width="75" height="20" forecolor="#000000" uuid="c2338fc5-c4ac-4e03-9dcc-03627900c7ed"/>
+				<textFieldExpression><![CDATA[$F{rg_cli}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="114" y="34" width="27" height="20" uuid="22aa282e-f02a-4d85-b484-0f487ef42db1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="94" width="41" height="20" uuid="2bc28467-058c-4a33-b026-eac4958ade63"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="61" y="64" width="487" height="20" forecolor="#000000" uuid="ab7b7cfa-0f89-4b79-b3c5-b36f502b942e"/>
+				<textFieldExpression><![CDATA[$F{end_cli}+", "+$F{num_cli}+", "+$F{bairro_cli}+", "+$F{cidade_cli}+" - "+$F{estado_cli}+", "+$F{cep_cli}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="64" width="53" height="20" uuid="d72310fa-c01c-4c35-85bc-9f21c757dbb4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Endereço:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="94" width="102" height="20" uuid="a9a85b44-b7b0-4a25-92f3-09a335aaf16b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Nascimento:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="110" y="94" width="84" height="20" forecolor="#000000" uuid="4063dd56-d739-418c-9398-c0c9dd464225"/>
+				<textFieldExpression><![CDATA[$F{dt_nasc_cli}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="100" y="126" width="84" height="20" forecolor="#000000" uuid="2119e83a-547e-429f-a205-75d2ebc8c05c"/>
+				<textFieldExpression><![CDATA[$F{dt_cad_cli}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="126" width="92" height="20" uuid="54afc2a2-91b3-497c-86c8-0731109ccb49"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Cadastro:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="264" y="126" width="168" height="20" forecolor="#000000" uuid="5c31ac81-2df1-42d7-8c06-22bd29044da5"/>
+				<textFieldExpression><![CDATA[$F{nome_func}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="194" y="126" width="70" height="20" uuid="776133ac-9a21-41c6-9cda-8438d43d5f1c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Funcionário:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="63" y="160" width="485" height="20" forecolor="#000000" uuid="c79791a4-5f93-4c9b-b31e-e4f569e761f9"/>
+				<textFieldExpression><![CDATA[$F{ref_com_cli}.length() <= 0 ? "Não possui referência comercial." : $F{ref_com_cli}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="160" width="55" height="20" uuid="8e452515-1068-4b1b-a444-d0fcaa0e1c6f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ref. Com.:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-1" y="6" width="558" height="1" uuid="8ba473c8-4208-404c-b491-e43f5f14881e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="e714820c-dd24-4121-aa7b-b38a0a14fb7f"/>
+				<textField>
+					<reportElement style="Column header" x="495" y="1" width="94" height="20" forecolor="#736343" uuid="2c7fe341-2dcd-4395-b9b1-8fd45db4efa6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Premiere Movies"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE, dd &apos;de&apos; MMMMM &apos;de&apos; yyyy &apos;às&apos; HH:mm">
+					<reportElement style="Column header" x="22" y="1" width="290" height="20" forecolor="#736343" uuid="0de63348-89e8-4507-a872-27eef2397251"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
